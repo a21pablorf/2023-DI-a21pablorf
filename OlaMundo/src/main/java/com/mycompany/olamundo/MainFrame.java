@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 
 /**
  *
@@ -33,7 +34,7 @@ public class MainFrame extends JFrame {
         textArea = new JTextArea();
         aceptarButton = new JButton("Aceptar");
         aceptarButton.addActionListener((ae) -> {
-            System.out.println("Boton pulsado");
+            dispose();
         });
 
         nomeEtiqueta = new JLabel("Pablo Romero", (int) CENTER_ALIGNMENT);
