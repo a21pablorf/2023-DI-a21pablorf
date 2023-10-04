@@ -20,6 +20,7 @@ public class FramePrincipal extends JFrame {
 
     private JTextField txt1 = new JTextField("0", 2);
     private JButton btn = new JButton("Incrementar");
+    private JButton btn2 = new JButton("Resetear");
 
     public FramePrincipal() {
         super("Exercicio 2");
@@ -35,10 +36,19 @@ public class FramePrincipal extends JFrame {
             }
         };
 
+        ActionListener a = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                txt1.setText("0");
+            }
+        };
+
         btn.addActionListener(al);
+        btn2.addActionListener(a);
 
         add(txt1);
         add(btn);
+        add(btn2);
 
         setSize(300, 300);
         setLocationRelativeTo(null);
