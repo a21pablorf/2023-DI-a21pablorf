@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JToolBar;
 
 /**
  *
@@ -21,7 +20,8 @@ public class MainFrame extends JFrame {
     private JButton aceptarButton;
     private TextPanel pan;
     private Toolbar tl;
-    
+    private FormPanel fp;
+
     public MainFrame() {
         super("Ola Mundo!");
 // Establecer o Layout
@@ -30,31 +30,40 @@ public class MainFrame extends JFrame {
         aceptarButton = new JButton("Aceptar");
         pan = new TextPanel();
         tl = new Toolbar();
-        
+        fp = new FormPanel();
+
         tl.setTextListener(new StringListener() {
             @Override
-            public void textEmited(String text) {
-                pan.appendText(text);
+            public void textEmited(StringEvent se) {
+                pan.appendText(se.getText());
             }
         });
-        
+
+        fp.setFormListener(new FormListener() {
+            @Override
+            public void TextEmitted(FormEvent e) {
+                pan.appendText(e.getText());
+            }
+        });
+
         ActionListener l = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 pan.appendText("aceptar");
             }
         };
-        
+
         aceptarButton.addActionListener(l);
 
 // engadir os compoñentes
         add(tl, BorderLayout.PAGE_START);
+        add(fp, BorderLayout.LINE_START);
         add(pan, BorderLayout.CENTER);
         add(aceptarButton, BorderLayout.PAGE_END);
         setSize(600, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
-        
+
     }
-    
+
 }

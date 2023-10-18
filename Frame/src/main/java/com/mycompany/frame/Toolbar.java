@@ -30,11 +30,13 @@ public class Toolbar extends JPanel {
                 JButton clickedButton = (JButton) e.getSource();
                 if (clickedButton == btn1) {
                     if (textListener != null) {
-                        textListener.textEmited("Hello\n");
+                        StringEvent se = new StringEvent("Hola\n", this);
+                        textListener.textEmited(se);
                     }
                 } else if (clickedButton == btn2) {
                     if (textListener != null) {
-                        textListener.textEmited("Goodbye\n");
+                        StringEvent se = new StringEvent("Aceptar\n", this);
+                        textListener.textEmited(se);
                     }
                 }
             }

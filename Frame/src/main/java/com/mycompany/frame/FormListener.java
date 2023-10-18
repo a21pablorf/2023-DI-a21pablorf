@@ -10,7 +10,8 @@ import java.util.EventListener;
  *
  * @author a21pablorf
  */
-public interface StringListener extends EventListener {
+public interface FormListener extends EventListener {
 
-    public void textEmited(StringEvent e);
+    public void TextEmitted(FormEvent e);
+
 }
