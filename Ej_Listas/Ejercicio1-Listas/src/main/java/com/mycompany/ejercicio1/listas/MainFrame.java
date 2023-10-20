@@ -55,9 +55,30 @@ class MainFrame extends JFrame {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-
+                int selected = listaNom.getSelectedIndex();
+                if (listaNom.getSelectedIndex() == listaNom.getLastVisibleIndex()) {
+                    nombres.remove(listaNom.getSelectedIndex());
+                    listaNom.setSelectedIndex(listaNom.getLastVisibleIndex());
+                } else {
+                    nombres.remove(listaNom.getSelectedIndex());
+                    listaNom.setSelectedIndex(selected);
+                }
+                if (nombres.size() == 0) {
+                    deleteBtn.setEnabled(false);
+                }
             }
         };
+
+        ActionListener a = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                nombres.addElement(txt.getText());
+                deleteBtn.setEnabled(true);
+            }
+        };
+
+        deleteBtn.addActionListener(al);
+        addBtn.addActionListener(a);
 
         pan.add(deleteBtn);
         pan.add(txt);
