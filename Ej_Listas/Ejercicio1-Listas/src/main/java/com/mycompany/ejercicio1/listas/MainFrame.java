@@ -8,7 +8,6 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Set;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -17,7 +16,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
-import javax.swing.border.Border;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -51,6 +51,8 @@ class MainFrame extends JFrame {
 
         pan.setLayout(new GridLayout(1, 3, 4, 4));
 
+        addBtn.setEnabled(false);
+
         //Funcionalidad Boton Borrar:
         ActionListener al = new ActionListener() {
             @Override
@@ -69,13 +71,44 @@ class MainFrame extends JFrame {
             }
         };
 
+        //Boton añadir
         ActionListener a = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 nombres.addElement(txt.getText());
+                listaNom.setSelectedIndex(listaNom.getLastVisibleIndex());
+                txt.setText("");
                 deleteBtn.setEnabled(true);
             }
         };
+
+        //Campo de texto y boton añadir
+        DocumentListener dl = new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent de) {
+                addBtn.setEnabled(true);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent de) {
+                if (txt.getText().equals("")) {
+                    addBtn.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent de) {
+                if (txt.getText().equals("")) {
+                    addBtn.setEnabled(false);
+                } else {
+                    addBtn.setEnabled(true);
+                }
+            }
+
+        };
+
+        txt.getDocument().addDocumentListener(dl);
+        txt.addActionListener(a);
 
         deleteBtn.addActionListener(al);
         addBtn.addActionListener(a);

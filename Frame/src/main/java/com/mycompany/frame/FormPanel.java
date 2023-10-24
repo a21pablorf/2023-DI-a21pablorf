@@ -4,17 +4,11 @@
  */
 package com.mycompany.frame;
 
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.print.attribute.standard.JobMediaSheetsCompleted;
+import javax.swing.*;
 import javax.swing.border.Border;
 
 /**
@@ -24,12 +18,16 @@ import javax.swing.border.Border;
 public class FormPanel extends JPanel {
 
     private FormListener formListener;
-
     private JLabel nameLabel;
     private JLabel OccupationLabel;
     private JLabel addLabel;
+    private JLabel ageLabel;
     private JTextField nameField;
     private JTextField OccupationField;
+    private JList ageList;
+    private JScrollPane sp;
+
+
     private JButton okButton;
 
     public FormPanel() {
@@ -41,16 +39,33 @@ public class FormPanel extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
 
         addLabel = new JLabel("Add Person");
-        nameLabel = new JLabel("Name");
+        nameLabel = new JLabel("Name: ");
+        ageLabel=new JLabel("Age: ");
         nameField = new JTextField(10);
-        OccupationLabel = new JLabel("Occupation");
+        OccupationLabel = new JLabel("Occupation: ");
         OccupationField = new JTextField(10);
-        okButton = new JButton("OK");
+        ageList=new JList();
+        okButton = new JButton("ENGADIR");
+
+
+        DefaultListModel model=new DefaultListModel();
+        model.addElement(new AgeCategory(1,"Under 18"));
+        model.addElement(new AgeCategory(2, "18 to 65"));
+        model.addElement(new AgeCategory(3, "65 or over"));
+
+        ageList.setModel(model);
+        ageList.setPreferredSize(new Dimension(70,100));
+
+        ageList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        ageList.setSelectedIndex(1);
+        sp=new JScrollPane(ageList);
+
 
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                FormEvent fe = new FormEvent("Nombre: " + nameField.getText() + "\nOcuppation: " + OccupationField.getText(), this);
+                AgeCategory c=(AgeCategory) model.getElementAt(ageList.getSelectedIndex());
+                FormEvent fe = new FormEvent(nameField.getText() + ": " + OccupationField.getText()+": "+c.getId()+"\n", this);
                 formListener.TextEmitted(fe);
             }
         };
@@ -61,6 +76,8 @@ public class FormPanel extends JPanel {
         Border outBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 
         setBorder(BorderFactory.createCompoundBorder(outBorder, inBorder));
+
+        sp.setPreferredSize(new Dimension(120,70));
 
         c.weightx = 1;
         c.weighty = 0.1;
@@ -93,14 +110,26 @@ public class FormPanel extends JPanel {
         add(OccupationField, c);
 
         //Terceira Fila
-        c.weighty = 2.0;
-
+        c.gridx = 0;
         c.gridy = 2;
+        c.insets = new Insets(0, 0, 0, 5);
+        c.anchor = GridBagConstraints.LINE_END;
+        add(ageLabel, c);
+
+        c.gridx = 1;
+        c.gridy = 2;
+        c.anchor = GridBagConstraints.LINE_START;
+        c.insets = new Insets(0, 0, 0, 0);
+        add(sp, c);
+
+        //Cuarta Fila
+        c.weighty = 2.0;
+        c.gridy = 3;
+        c.gridx=1;
         c.anchor = GridBagConstraints.FIRST_LINE_START;
         add(okButton, c);
 
     }
-
     public void setFormListener(FormListener textListener) {
         this.formListener = textListener;
     }
