@@ -22,9 +22,11 @@ public class FormPanel extends JPanel {
     private JLabel OccupationLabel;
     private JLabel addLabel;
     private JLabel ageLabel;
+    private JLabel employmentLabel;
     private JTextField nameField;
     private JTextField OccupationField;
     private JList ageList;
+    private JComboBox employment;
     private JScrollPane sp;
 
 
@@ -42,9 +44,12 @@ public class FormPanel extends JPanel {
         nameLabel = new JLabel("Name: ");
         ageLabel=new JLabel("Age: ");
         nameField = new JTextField(10);
+        employmentLabel=new JLabel("Employment: ");
         OccupationLabel = new JLabel("Occupation: ");
         OccupationField = new JTextField(10);
         ageList=new JList();
+        String[] opciones={"employed","unemployed","self-employed"};
+        employment=new JComboBox(opciones);
         okButton = new JButton("ENGADIR");
 
 
@@ -64,8 +69,10 @@ public class FormPanel extends JPanel {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                //Selecciono Index del JList, para buscar el texto en el array a través del índice
                 AgeCategory c=(AgeCategory) model.getElementAt(ageList.getSelectedIndex());
-                FormEvent fe = new FormEvent(nameField.getText() + ": " + OccupationField.getText()+": "+c.getId()+"\n", this);
+                FormEvent fe = new FormEvent(nameField.getText() + " : " + OccupationField.getText()+" : "+c.getId()
+                        +" : "+employment.getSelectedItem()+"\n", this);
                 formListener.TextEmitted(fe);
             }
         };
@@ -123,8 +130,21 @@ public class FormPanel extends JPanel {
         add(sp, c);
 
         //Cuarta Fila
-        c.weighty = 2.0;
+        c.gridx = 0;
         c.gridy = 3;
+        c.insets = new Insets(0, 0, 0, 5);
+        c.anchor = GridBagConstraints.LINE_END;
+        add(employmentLabel, c);
+
+        c.gridx = 1;
+        c.gridy = 3;
+        c.anchor = GridBagConstraints.LINE_START;
+        c.insets = new Insets(0, 0, 0, 0);
+        add(employment, c);
+
+        //Quinta Fila(BOTON DE OK)
+        c.weighty = 2.0;
+        c.gridy = 4;
         c.gridx=1;
         c.anchor = GridBagConstraints.FIRST_LINE_START;
         add(okButton, c);
