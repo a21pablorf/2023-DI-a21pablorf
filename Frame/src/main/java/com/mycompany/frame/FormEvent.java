@@ -12,23 +12,27 @@ import java.util.EventObject;
  */
 public class FormEvent extends EventObject {
 
-    private String text;
+    private String name;
+    private String oc;
+    private int ageCId;
+    private String employed;
+    private String gender;
 
     public FormEvent(Object source) {
         super(source);
     }
 
-    public FormEvent(String text, Object source) {
+    public FormEvent(Object source, String name, String oc, int ageCId, String employed, String gender) {
         super(source);
-        this.text = text;
+        this.name = name;
+        this.oc = oc;
+        this.ageCId = ageCId;
+        this.employed = employed;
+        this.gender = gender;
     }
 
-    public String getText() {
-        return text;
+    @Override
+    public String toString() {
+        return name+" : "+ oc +" : "+ageCId+" : "+employed+" : "+gender;
     }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
 }

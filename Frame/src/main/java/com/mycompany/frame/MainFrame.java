@@ -18,6 +18,8 @@ public class MainFrame extends JFrame {
     private TextPanel pan;
     private Toolbar tl;
     private FormPanel fp;
+    private JFileChooser fileChooserExp;
+    private JFileChooser fileChooserImp;
 
     public MainFrame() {
         super("Ola Mundo!");
@@ -28,6 +30,8 @@ public class MainFrame extends JFrame {
         pan = new TextPanel();
         tl = new Toolbar();
         fp = new FormPanel();
+        fileChooserExp =new JFileChooser();
+        fileChooserImp=new JFileChooser();
 
         setJMenuBar(createMenuBar());
 
@@ -41,7 +45,7 @@ public class MainFrame extends JFrame {
         fp.setFormListener(new FormListener() {
             @Override
             public void TextEmitted(FormEvent e) {
-                pan.appendText(e.getText());
+                pan.appendText(e.toString());
             }
         });
 
@@ -61,6 +65,7 @@ public class MainFrame extends JFrame {
         add(aceptarButton, BorderLayout.PAGE_END);
         setSize(600, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setVisible(true);
 
     }
@@ -73,6 +78,12 @@ public class MainFrame extends JFrame {
         JMenu window = new JMenu("Window");
         JMenuItem exportItem = new JMenuItem("Export Data");
         exportItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E,ActionEvent.CTRL_MASK));
+        exportItem.addActionListener(actionEvent -> {
+            fileChooserExp.addChoosableFileFilter(new FileChooserFilter());
+            int n=fileChooserExp.showSaveDialog(MainFrame.this);
+
+        });
+
         JMenuItem importItem = new JMenuItem("Import Data");
         importItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I,ActionEvent.CTRL_MASK));
         JMenuItem exitItem = new JMenuItem("Exit");
@@ -81,7 +92,11 @@ public class MainFrame extends JFrame {
         exitItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                dispose();
+                int n=JOptionPane.showConfirmDialog(MainFrame.this,"Está seguro que quere saír?",
+                        "Pechar",JOptionPane.YES_NO_CANCEL_OPTION);
+                if(n==0){
+                    dispose();
+                }
             }
         });
         JMenu showItem=new JMenu("Show");
@@ -103,5 +118,4 @@ public class MainFrame extends JFrame {
         menuBar.add(window);
         return menuBar;
     }
-
 }
