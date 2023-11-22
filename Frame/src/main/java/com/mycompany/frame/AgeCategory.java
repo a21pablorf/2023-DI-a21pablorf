@@ -31,7 +31,4 @@ public class AgeCategory {
         return text;
     }
 
-    //    model.addElement("Under 18");
-//        model.addElement("18 to 65");
-//        model.addElement("65 or over");
 }

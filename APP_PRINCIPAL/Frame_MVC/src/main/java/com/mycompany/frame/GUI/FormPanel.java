@@ -2,12 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.frame;
+package com.mycompany.frame.GUI;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.print.attribute.standard.JobMediaSheetsCompleted;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -24,6 +25,10 @@ public class FormPanel extends JPanel {
     private JLabel ageLabel;
     private JLabel employmentLabel;
     private JLabel genderLabel;
+    private JLabel citizenLabel;
+    private JLabel taxLabel;
+    private JCheckBox citizenBox;
+    private JTextField taxText;
     private JTextField nameField;
     private JTextField OccupationField;
     private JRadioButton fmBtn;
@@ -39,7 +44,7 @@ public class FormPanel extends JPanel {
     public FormPanel() {
         setLayout(new GridBagLayout());
         Dimension dim = getPreferredSize();
-        dim.width = 250;
+        dim.width = 275;
         setPreferredSize(dim);
 
         GridBagConstraints c = new GridBagConstraints();
@@ -53,9 +58,34 @@ public class FormPanel extends JPanel {
         genderLabel=new JLabel("Gender: ");
         OccupationField = new JTextField(10);
         ageList=new JList();
-        String[] opciones={"employed","unemployed","self-employed"};
+
+        String[] opciones={"employed","unemployed","self-employed",""};
         employment=new JComboBox(opciones);
+
         okButton = new JButton("ENGADIR");
+
+        //Alteracion del comboBox
+        employment.setEditable(true);
+
+        //Creacion del TAX donde comprueba el CITIZEN
+        citizenLabel = new JLabel("US Citizen");
+        citizenBox = new JCheckBox();
+        taxLabel = new JLabel("Tax ID");
+        taxLabel.setEnabled(false);
+        taxText = new JTextField(10);
+        taxText.setEnabled(false);
+        citizenBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent ie) {
+                if(ie.getStateChange() == ItemEvent.SELECTED){
+                    taxText.setEnabled(true);
+                    taxLabel.setEnabled(true);
+                }else if(ie.getStateChange() == ItemEvent.DESELECTED){
+                    taxText.setEnabled(false);
+                    taxLabel.setEnabled(false);
+                }
+            }
+        });
 
         //Creacion Radio Buttons
         fmBtn=new JRadioButton("female");
@@ -80,15 +110,20 @@ public class FormPanel extends JPanel {
         ageList.setSelectedIndex(1);
         sp=new JScrollPane(ageList);
 
-
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 //Selecciono Index del JList, para buscar el texto en el array a través del índice
+
                 AgeCategory c=(AgeCategory) model.getElementAt(ageList.getSelectedIndex());
                 String emp=opciones[employment.getSelectedIndex()];
-
-                FormEvent fe = new FormEvent(this,nameField.getText(),OccupationField.getText(),c.getId(),emp,group.getSelection().getActionCommand());
+                    for (int i = 0; i < opciones.length; i++) {
+                        if(emp!=opciones[i]){
+                            emp=opciones[1];
+                        }
+                    }
+                    System.out.println(citizenBox.isSelected());
+                    FormEvent fe = new FormEvent(this,nameField.getText(),OccupationField.getText(),c.getId()-1,emp,citizenBox.isSelected(),taxText.getText(),group.getSelection().getActionCommand());
                 if(fe!=null){
                     formListener.TextEmitted(fe);
                 }
@@ -159,33 +194,90 @@ public class FormPanel extends JPanel {
         c.insets = new Insets(0, 0, 0, 0);
         add(employment, c);
 
-        //Quinta y sexta Fila (Radio Buttons)
+        //Quinta y sexta
         c.gridx = 0;
         c.gridy = 4;
         c.insets = new Insets(0, 0, 0, 5);
         c.anchor = GridBagConstraints.LINE_END;
-        add(genderLabel, c);
+        add(citizenLabel, c);
 
         c.gridx = 1;
         c.gridy = 4;
         c.anchor = GridBagConstraints.LINE_START;
         c.insets = new Insets(0, 0, 0, 0);
-        add(fmBtn, c);
+        add(citizenBox, c);
+
+        c.gridx = 0;
+        c.gridy = 5;
+        c.insets = new Insets(0, 0, 0, 5);
+        c.anchor = GridBagConstraints.LINE_END;
+        add(taxLabel, c);
 
         c.gridx = 1;
         c.gridy = 5;
         c.anchor = GridBagConstraints.LINE_START;
         c.insets = new Insets(0, 0, 0, 0);
+        add(taxText, c);
+
+        //Septima y octava Fila (Radio Buttons)
+        c.gridx = 0;
+        c.gridy = 6;
+        c.insets = new Insets(0, 0, 0, 5);
+        c.anchor = GridBagConstraints.LINE_END;
+        add(genderLabel, c);
+
+        c.gridx = 1;
+        c.gridy = 6;
+        c.anchor = GridBagConstraints.LINE_START;
+        c.insets = new Insets(0, 0, 0, 0);
+        add(fmBtn, c);
+
+        c.gridx = 1;
+        c.gridy = 7;
+        c.anchor = GridBagConstraints.LINE_START;
+        c.insets = new Insets(0, 0, 0, 0);
         add(mBtn, c);
 
-        //Septima Fila(BOTON DE OK)
+        //Ultima Fila(BOTON DE OK)
         c.weighty = 2.0;
-        c.gridy = 6;
+        c.gridy = 8;
         c.gridx=1;
         c.anchor = GridBagConstraints.FIRST_LINE_START;
         add(okButton, c);
     }
     public void setFormListener(FormListener textListener) {
         this.formListener = textListener;
+    }
+}
+
+class AgeCategory {
+
+    private int id;
+    private String text;
+
+    public AgeCategory(int id, String text) {
+        this.id = id;
+        this.text = text;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return text;
     }
 }
