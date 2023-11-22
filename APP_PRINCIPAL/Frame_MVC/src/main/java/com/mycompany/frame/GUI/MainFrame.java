@@ -46,7 +46,6 @@ public class MainFrame extends JFrame {
 
         //Actualizar estado TABLA
 
-        tp.setData(controller.getPeople());
 
         setJMenuBar(createMenuBar());
 
@@ -58,14 +57,6 @@ public class MainFrame extends JFrame {
             }
         });
 
-        ActionListener l = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                txtPan.appendText("aceptar");
-            }
-        };
-
-        aceptarButton.addActionListener(l);
 
         ///TOOLBAR
         tl.setToolbarListener(new ToolbarListener() {
@@ -76,7 +67,6 @@ public class MainFrame extends JFrame {
                     try {
                         controller.importFromFile(fileChooser.getSelectedFile());
                         tp.refresh();
-
                     } catch (IOException e) {
                         System.out.println("Open command cancelled by user.");
                     }
@@ -95,6 +85,7 @@ public class MainFrame extends JFrame {
                         controller.saveToFile(f);
                     } catch (IOException e) {
                         System.err.println("Ese archivo está feo "+e.getMessage());
+                        e.printStackTrace();
                     }
                 } else {
                     System.out.println("Open command cancelled by user.");

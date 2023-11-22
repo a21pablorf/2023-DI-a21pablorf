@@ -12,6 +12,7 @@ import java.util.EventObject;
  */
 public class FormEvent extends EventObject {
 
+    private int id;
     private String name;
     private String oc;
     private int ageCategory;
@@ -26,8 +27,9 @@ public class FormEvent extends EventObject {
 
 
     //Constructor completo
-    public FormEvent(Object source, String name, String oc, int ageCategory, String employed, boolean usCitizen, String taxId, String gender) {
+    public FormEvent(Object source,String name, String oc, int ageCategory, String employed, boolean usCitizen, String taxId, String gender) {
         super(source);
+        this.id=getId()+1;
         this.name = name;
         this.oc = oc;
         this.ageCategory = ageCategory;
@@ -35,6 +37,10 @@ public class FormEvent extends EventObject {
         this.usCitizen = usCitizen;
         this.taxId = taxId;
         this.gender = gender;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public boolean isUsCitizen() {
@@ -96,10 +102,10 @@ public class FormEvent extends EventObject {
     @Override
     public String toString() {
         if(usCitizen){
-            return name+" : "+ oc +" : "+ ageCategory +" : "+ empCategory +" : "+usCitizen+" : "+taxId+" : "+gender+System.lineSeparator();
+            return id+" : "+name+" : "+ oc +" : "+ ageCategory +" : "+ empCategory +" : "+usCitizen+" : "+taxId+" : "+gender+System.lineSeparator();
         }
         else{
-            return name+" : "+ oc +" : "+ ageCategory +" : "+ empCategory +" : "+gender+System.lineSeparator();
+            return id+" : "+name+" : "+ oc +" : "+ ageCategory +" : "+ empCategory +" : "+gender+System.lineSeparator();
         }
     }
 }

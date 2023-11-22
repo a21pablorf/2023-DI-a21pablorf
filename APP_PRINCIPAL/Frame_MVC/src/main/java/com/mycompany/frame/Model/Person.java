@@ -1,7 +1,9 @@
 package com.mycompany.frame.Model;
 
-public class Person {
-    private int count=0;
+import java.io.Serializable;
+
+public class Person implements Serializable {
+    private static int count=0;
     private int id;
     private String name;
     private String occupation;
@@ -11,10 +13,9 @@ public class Person {
     private boolean usCitizen;
     private Gender gender;
 
-    public Person(int count, int id, String name, String occupation, AgeCategory ageCategory,
+    public Person(String name, String occupation, AgeCategory ageCategory,
                   EmploymentCategory empCategory,boolean usCitizen,  String taxId, Gender gender) {
-        this.count = count;
-        this.id = id;
+        this.id=count++;
         this.name = name;
         this.occupation = occupation;
         this.ageCategory = ageCategory;
@@ -24,15 +25,6 @@ public class Person {
         this.gender = gender;
     }
 
-    public Person(String name, String occupation, AgeCategory ageCategory, EmploymentCategory empCategory,boolean usCitizen, String taxId,  Gender gender) {
-        this.name = name;
-        this.occupation = occupation;
-        this.ageCategory = ageCategory;
-        this.empCategory = empCategory;
-        this.taxId = taxId;
-        this.usCitizen = usCitizen;
-        this.gender = gender;
-    }
 
     public int getCount() {
         return count;

@@ -11,7 +11,9 @@ public class Controller {
     // Garda unha referencia á base de datos
     private Database db = new Database();
 
+    public Controller(){
 
+    }
 
     public void addPerson(FormEvent ev) {
 // Recuperar toda a información do obxecto ev

@@ -24,10 +24,7 @@ public class Toolbar extends JToolBar {
 
     private JButton btn1 = new JButton();
     private JButton btn2 = new JButton();
-
     private ToolbarListener toolbarListener;
-    private Database db=new Database();
-
     private JFileChooser fileChooserExp=new JFileChooser();
     private JFileChooser fileChooserImp=new JFileChooser();
 
