@@ -1,9 +1,11 @@
 package com.mycompany.frame.GUI;
 
+import com.mycompany.frame.Model.EmploymentCategory;
 import com.mycompany.frame.Model.Person;
 
 import javax.swing.*;
 import javax.swing.event.PopupMenuListener;
+import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +17,6 @@ public class TablePanel extends JPanel {
     private JTable table;
     private JPopupMenu popup;
     private PersonTableModel personTableModel;
-
     private TableModelListener tableModelListener;
 
     public TablePanel() {
@@ -35,6 +36,8 @@ public class TablePanel extends JPanel {
             }
         });
 
+        table.setDefaultRenderer(EmploymentCategory.class,new EmploymentCategoryRender());
+
         JMenuItem menuBorrar=new JMenuItem("Borrar fila");
         menuBorrar.addActionListener(new ActionListener() {
             @Override
@@ -44,6 +47,8 @@ public class TablePanel extends JPanel {
         });
 
         popup.add(menuBorrar);
+
+
 
 //        popup.addMouseListener(new MouseAdapter() {
 //            @Override

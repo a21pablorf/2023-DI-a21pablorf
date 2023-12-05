@@ -35,11 +35,17 @@ public class FormPanel extends JPanel {
     private JRadioButton mBtn;
     private ButtonGroup group=new ButtonGroup();
     private JList ageList;
-    private JComboBox employment;
+    public JComboBox employment;
     private JScrollPane sp;
 
+    private String[] opciones={"employed","unemployed","self-employed","other"};
+
+    public String[] getOpciones() {
+        return opciones;
+    }
 
     private JButton okButton;
+
 
     public FormPanel() {
         setLayout(new GridBagLayout());
@@ -59,13 +65,14 @@ public class FormPanel extends JPanel {
         OccupationField = new JTextField(10);
         ageList=new JList();
 
-        String[] opciones={"employed","unemployed","self-employed",""};
+
         employment=new JComboBox(opciones);
 
         okButton = new JButton("ENGADIR");
 
         //Alteracion del comboBox
         employment.setEditable(true);
+
 
         //Creacion del TAX donde comprueba el CITIZEN
         citizenLabel = new JLabel("US Citizen");
@@ -117,11 +124,12 @@ public class FormPanel extends JPanel {
 
                 AgeCategory c=(AgeCategory) model.getElementAt(ageList.getSelectedIndex());
                 String emp=opciones[employment.getSelectedIndex()];
-                    for (int i = 0; i < opciones.length; i++) {
-                        if(emp!=opciones[i]){
-                            emp=opciones[1];
-                        }
-                    }
+//                    for (int i = 0; i < opciones.length; i++) {
+//                        if(emp!=opciones[i]){
+//                            emp=opciones[1];
+//                        }
+//                    }
+                System.out.println(emp);
                     System.out.println(citizenBox.isSelected());
                     FormEvent fe = new FormEvent(this,nameField.getText(),OccupationField.getText(),c.getId()-1,emp,citizenBox.isSelected(),taxText.getText(),group.getSelection().getActionCommand());
                 if(fe!=null){
@@ -245,6 +253,13 @@ public class FormPanel extends JPanel {
         c.anchor = GridBagConstraints.FIRST_LINE_START;
         add(okButton, c);
     }
+
+    public JComboBox getEmployment() {
+        return employment;
+    }
+
+
+
     public void setFormListener(FormListener textListener) {
         this.formListener = textListener;
     }

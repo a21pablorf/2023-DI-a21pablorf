@@ -1,5 +1,6 @@
 package com.mycompany.frame.GUI;
 
+import com.mycompany.frame.Model.EmploymentCategory;
 import com.mycompany.frame.Model.Person;
 
 import javax.swing.table.AbstractTableModel;
@@ -12,6 +13,35 @@ public class PersonTableModel extends AbstractTableModel {
     public PersonTableModel() { }
     public void setData(List<Person> personList) {
         this.personList = personList;
+    }
+
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        Person person=personList.get(rowIndex);
+        if(columnIndex==1){
+            person.setName((String) aValue);
+        }
+        if(columnIndex==5){
+            person.setUsCitizen((Boolean) aValue);
+        }
+        super.setValueAt(aValue, rowIndex, columnIndex);
+    }
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        if(columnIndex==1||columnIndex==5){
+            return true;
+        }
+        return super.isCellEditable(rowIndex, columnIndex);
+    }
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        if(columnIndex==5){
+            return Boolean.class;
+        } else if (columnIndex==4) {
+            return EmploymentCategory.class;
+        } else{
+            return super.getColumnClass(columnIndex);
+        }
     }
     @Override
     public int getRowCount() {

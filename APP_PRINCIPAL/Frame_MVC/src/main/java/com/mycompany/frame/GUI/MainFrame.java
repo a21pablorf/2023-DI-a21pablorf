@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import javax.swing.*;
+import javax.swing.table.TableColumn;
 
 /**
  * @author a21pablorf
@@ -93,6 +94,7 @@ public class MainFrame extends JFrame {
 //
             }
         });
+
 
         // engadir os compoñentes
         add(tl, BorderLayout.PAGE_START);
