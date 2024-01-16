@@ -48,8 +48,6 @@ public class TablePanel extends JPanel {
 
         popup.add(menuBorrar);
 
-
-
 //        popup.addMouseListener(new MouseAdapter() {
 //            @Override
 //            public void mouseClicked(MouseEvent e) {

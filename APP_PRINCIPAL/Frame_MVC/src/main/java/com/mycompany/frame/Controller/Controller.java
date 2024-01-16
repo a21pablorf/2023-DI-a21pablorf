@@ -43,7 +43,6 @@ public class Controller {
         else
             genderCategory=Gender.FEMALE;
 
-
         Person person = new Person(name, occupation, ageCategory, empCategory,
                 isUs, taxId,  genderCategory);
         db.addPerson(person);

@@ -7,7 +7,6 @@ package com.mycompany.frame.GUI;
 import java.util.EventObject;
 
 /**
- *
  * @author a21pablorf
  */
 public class FormEvent extends EventObject {
