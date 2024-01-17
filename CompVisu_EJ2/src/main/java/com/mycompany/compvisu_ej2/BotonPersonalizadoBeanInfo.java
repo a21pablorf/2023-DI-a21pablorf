@@ -181,7 +181,7 @@ public class BotonPersonalizadoBeanInfo extends SimpleBeanInfo {
             properties[PROPERTY_bounds] = new PropertyDescriptor ( "bounds", com.mycompany.compvisu_ej2.BotonPersonalizado.class, "getBounds", "setBounds" ); // NOI18N
             properties[PROPERTY_changeListeners] = new PropertyDescriptor ( "changeListeners", com.mycompany.compvisu_ej2.BotonPersonalizado.class, "getChangeListeners", null ); // NOI18N
             properties[PROPERTY_colores] = new PropertyDescriptor ( "colores", com.mycompany.compvisu_ej2.BotonPersonalizado.class, "getColores", "setColores" ); // NOI18N
-            properties[PROPERTY_colores].setPropertyEditorClass ( <null value> );
+            properties[PROPERTY_colores].setPropertyEditorClass ( com.mycompany.compvisu_ej2.ColorPropertyEditorSupport.class );
             properties[PROPERTY_colorModel] = new PropertyDescriptor ( "colorModel", com.mycompany.compvisu_ej2.BotonPersonalizado.class, "getColorModel", null ); // NOI18N
             properties[PROPERTY_component] = new IndexedPropertyDescriptor ( "component", com.mycompany.compvisu_ej2.BotonPersonalizado.class, null, null, "getComponent", null ); // NOI18N
             properties[PROPERTY_componentCount] = new PropertyDescriptor ( "componentCount", com.mycompany.compvisu_ej2.BotonPersonalizado.class, "getComponentCount", null ); // NOI18N

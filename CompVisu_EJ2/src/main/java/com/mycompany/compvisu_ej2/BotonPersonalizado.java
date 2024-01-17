@@ -18,14 +18,6 @@ public class BotonPersonalizado extends JButton implements Serializable {
     public BotonPersonalizado() {
     }
 
-    public void setColorTexto() {
-        setForeground(colores.getColorTexto());
-    }
-
-    public void setColorFondo() {
-        setBackground(colores.getColorFondo());
-    }
-
     public Colores getColores() {
         return colores;
     }
