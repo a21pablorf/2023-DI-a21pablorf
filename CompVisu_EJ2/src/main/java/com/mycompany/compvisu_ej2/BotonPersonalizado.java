@@ -12,18 +12,20 @@ import javax.swing.JButton;
  * @author a21pablorf
  */
 public class BotonPersonalizado extends JButton implements Serializable {
-
+    
     private Colores colores;
-
+    
     public BotonPersonalizado() {
     }
-
+    
     public Colores getColores() {
         return colores;
     }
-
+    
     public void setColores(Colores colores) {
         this.colores = colores;
+        setForeground(colores.getColorTexto());
+        setBackground(colores.getColorFondo());
     }
-
+    
 }

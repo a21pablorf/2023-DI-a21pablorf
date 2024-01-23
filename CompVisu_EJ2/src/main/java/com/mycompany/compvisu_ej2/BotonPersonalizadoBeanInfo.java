@@ -491,28 +491,26 @@ public class BotonPersonalizadoBeanInfo extends SimpleBeanInfo {
     private static final int METHOD_revalidate131 = 131;
     private static final int METHOD_scrollRectToVisible132 = 132;
     private static final int METHOD_setBounds133 = 133;
-    private static final int METHOD_setColorFondo134 = 134;
-    private static final int METHOD_setColorTexto135 = 135;
-    private static final int METHOD_setComponentZOrder136 = 136;
-    private static final int METHOD_setDefaultLocale137 = 137;
-    private static final int METHOD_setMnemonic138 = 138;
-    private static final int METHOD_show139 = 139;
-    private static final int METHOD_show140 = 140;
-    private static final int METHOD_size141 = 141;
-    private static final int METHOD_toString142 = 142;
-    private static final int METHOD_transferFocus143 = 143;
-    private static final int METHOD_transferFocusBackward144 = 144;
-    private static final int METHOD_transferFocusDownCycle145 = 145;
-    private static final int METHOD_transferFocusUpCycle146 = 146;
-    private static final int METHOD_unregisterKeyboardAction147 = 147;
-    private static final int METHOD_update148 = 148;
-    private static final int METHOD_updateUI149 = 149;
-    private static final int METHOD_validate150 = 150;
+    private static final int METHOD_setComponentZOrder134 = 134;
+    private static final int METHOD_setDefaultLocale135 = 135;
+    private static final int METHOD_setMnemonic136 = 136;
+    private static final int METHOD_show137 = 137;
+    private static final int METHOD_show138 = 138;
+    private static final int METHOD_size139 = 139;
+    private static final int METHOD_toString140 = 140;
+    private static final int METHOD_transferFocus141 = 141;
+    private static final int METHOD_transferFocusBackward142 = 142;
+    private static final int METHOD_transferFocusDownCycle143 = 143;
+    private static final int METHOD_transferFocusUpCycle144 = 144;
+    private static final int METHOD_unregisterKeyboardAction145 = 145;
+    private static final int METHOD_update146 = 146;
+    private static final int METHOD_updateUI147 = 147;
+    private static final int METHOD_validate148 = 148;
 
     // Method array 
     /*lazy MethodDescriptor*/
     private static MethodDescriptor[] getMdescriptor(){
-        MethodDescriptor[] methods = new MethodDescriptor[151];
+        MethodDescriptor[] methods = new MethodDescriptor[149];
     
         try {
             methods[METHOD_action0] = new MethodDescriptor(java.awt.Component.class.getMethod("action", new Class[] {java.awt.Event.class, java.lang.Object.class})); // NOI18N
@@ -783,40 +781,36 @@ public class BotonPersonalizadoBeanInfo extends SimpleBeanInfo {
             methods[METHOD_scrollRectToVisible132].setDisplayName ( "" );
             methods[METHOD_setBounds133] = new MethodDescriptor(java.awt.Component.class.getMethod("setBounds", new Class[] {int.class, int.class, int.class, int.class})); // NOI18N
             methods[METHOD_setBounds133].setDisplayName ( "" );
-            methods[METHOD_setColorFondo134] = new MethodDescriptor(com.mycompany.compvisu_ej2.BotonPersonalizado.class.getMethod("setColorFondo", new Class[] {})); // NOI18N
-            methods[METHOD_setColorFondo134].setDisplayName ( "" );
-            methods[METHOD_setColorTexto135] = new MethodDescriptor(com.mycompany.compvisu_ej2.BotonPersonalizado.class.getMethod("setColorTexto", new Class[] {})); // NOI18N
-            methods[METHOD_setColorTexto135].setDisplayName ( "" );
-            methods[METHOD_setComponentZOrder136] = new MethodDescriptor(java.awt.Container.class.getMethod("setComponentZOrder", new Class[] {java.awt.Component.class, int.class})); // NOI18N
-            methods[METHOD_setComponentZOrder136].setDisplayName ( "" );
-            methods[METHOD_setDefaultLocale137] = new MethodDescriptor(javax.swing.JComponent.class.getMethod("setDefaultLocale", new Class[] {java.util.Locale.class})); // NOI18N
-            methods[METHOD_setDefaultLocale137].setDisplayName ( "" );
-            methods[METHOD_setMnemonic138] = new MethodDescriptor(javax.swing.AbstractButton.class.getMethod("setMnemonic", new Class[] {int.class})); // NOI18N
-            methods[METHOD_setMnemonic138].setDisplayName ( "" );
-            methods[METHOD_show139] = new MethodDescriptor(java.awt.Component.class.getMethod("show", new Class[] {})); // NOI18N
-            methods[METHOD_show139].setDisplayName ( "" );
-            methods[METHOD_show140] = new MethodDescriptor(java.awt.Component.class.getMethod("show", new Class[] {boolean.class})); // NOI18N
-            methods[METHOD_show140].setDisplayName ( "" );
-            methods[METHOD_size141] = new MethodDescriptor(java.awt.Component.class.getMethod("size", new Class[] {})); // NOI18N
-            methods[METHOD_size141].setDisplayName ( "" );
-            methods[METHOD_toString142] = new MethodDescriptor(java.awt.Component.class.getMethod("toString", new Class[] {})); // NOI18N
-            methods[METHOD_toString142].setDisplayName ( "" );
-            methods[METHOD_transferFocus143] = new MethodDescriptor(java.awt.Component.class.getMethod("transferFocus", new Class[] {})); // NOI18N
-            methods[METHOD_transferFocus143].setDisplayName ( "" );
-            methods[METHOD_transferFocusBackward144] = new MethodDescriptor(java.awt.Component.class.getMethod("transferFocusBackward", new Class[] {})); // NOI18N
-            methods[METHOD_transferFocusBackward144].setDisplayName ( "" );
-            methods[METHOD_transferFocusDownCycle145] = new MethodDescriptor(java.awt.Container.class.getMethod("transferFocusDownCycle", new Class[] {})); // NOI18N
-            methods[METHOD_transferFocusDownCycle145].setDisplayName ( "" );
-            methods[METHOD_transferFocusUpCycle146] = new MethodDescriptor(java.awt.Component.class.getMethod("transferFocusUpCycle", new Class[] {})); // NOI18N
-            methods[METHOD_transferFocusUpCycle146].setDisplayName ( "" );
-            methods[METHOD_unregisterKeyboardAction147] = new MethodDescriptor(javax.swing.JComponent.class.getMethod("unregisterKeyboardAction", new Class[] {javax.swing.KeyStroke.class})); // NOI18N
-            methods[METHOD_unregisterKeyboardAction147].setDisplayName ( "" );
-            methods[METHOD_update148] = new MethodDescriptor(javax.swing.JComponent.class.getMethod("update", new Class[] {java.awt.Graphics.class})); // NOI18N
-            methods[METHOD_update148].setDisplayName ( "" );
-            methods[METHOD_updateUI149] = new MethodDescriptor(javax.swing.JButton.class.getMethod("updateUI", new Class[] {})); // NOI18N
-            methods[METHOD_updateUI149].setDisplayName ( "" );
-            methods[METHOD_validate150] = new MethodDescriptor(java.awt.Container.class.getMethod("validate", new Class[] {})); // NOI18N
-            methods[METHOD_validate150].setDisplayName ( "" );
+            methods[METHOD_setComponentZOrder134] = new MethodDescriptor(java.awt.Container.class.getMethod("setComponentZOrder", new Class[] {java.awt.Component.class, int.class})); // NOI18N
+            methods[METHOD_setComponentZOrder134].setDisplayName ( "" );
+            methods[METHOD_setDefaultLocale135] = new MethodDescriptor(javax.swing.JComponent.class.getMethod("setDefaultLocale", new Class[] {java.util.Locale.class})); // NOI18N
+            methods[METHOD_setDefaultLocale135].setDisplayName ( "" );
+            methods[METHOD_setMnemonic136] = new MethodDescriptor(javax.swing.AbstractButton.class.getMethod("setMnemonic", new Class[] {int.class})); // NOI18N
+            methods[METHOD_setMnemonic136].setDisplayName ( "" );
+            methods[METHOD_show137] = new MethodDescriptor(java.awt.Component.class.getMethod("show", new Class[] {})); // NOI18N
+            methods[METHOD_show137].setDisplayName ( "" );
+            methods[METHOD_show138] = new MethodDescriptor(java.awt.Component.class.getMethod("show", new Class[] {boolean.class})); // NOI18N
+            methods[METHOD_show138].setDisplayName ( "" );
+            methods[METHOD_size139] = new MethodDescriptor(java.awt.Component.class.getMethod("size", new Class[] {})); // NOI18N
+            methods[METHOD_size139].setDisplayName ( "" );
+            methods[METHOD_toString140] = new MethodDescriptor(java.awt.Component.class.getMethod("toString", new Class[] {})); // NOI18N
+            methods[METHOD_toString140].setDisplayName ( "" );
+            methods[METHOD_transferFocus141] = new MethodDescriptor(java.awt.Component.class.getMethod("transferFocus", new Class[] {})); // NOI18N
+            methods[METHOD_transferFocus141].setDisplayName ( "" );
+            methods[METHOD_transferFocusBackward142] = new MethodDescriptor(java.awt.Component.class.getMethod("transferFocusBackward", new Class[] {})); // NOI18N
+            methods[METHOD_transferFocusBackward142].setDisplayName ( "" );
+            methods[METHOD_transferFocusDownCycle143] = new MethodDescriptor(java.awt.Container.class.getMethod("transferFocusDownCycle", new Class[] {})); // NOI18N
+            methods[METHOD_transferFocusDownCycle143].setDisplayName ( "" );
+            methods[METHOD_transferFocusUpCycle144] = new MethodDescriptor(java.awt.Component.class.getMethod("transferFocusUpCycle", new Class[] {})); // NOI18N
+            methods[METHOD_transferFocusUpCycle144].setDisplayName ( "" );
+            methods[METHOD_unregisterKeyboardAction145] = new MethodDescriptor(javax.swing.JComponent.class.getMethod("unregisterKeyboardAction", new Class[] {javax.swing.KeyStroke.class})); // NOI18N
+            methods[METHOD_unregisterKeyboardAction145].setDisplayName ( "" );
+            methods[METHOD_update146] = new MethodDescriptor(javax.swing.JComponent.class.getMethod("update", new Class[] {java.awt.Graphics.class})); // NOI18N
+            methods[METHOD_update146].setDisplayName ( "" );
+            methods[METHOD_updateUI147] = new MethodDescriptor(javax.swing.JButton.class.getMethod("updateUI", new Class[] {})); // NOI18N
+            methods[METHOD_updateUI147].setDisplayName ( "" );
+            methods[METHOD_validate148] = new MethodDescriptor(java.awt.Container.class.getMethod("validate", new Class[] {})); // NOI18N
+            methods[METHOD_validate148].setDisplayName ( "" );
         }
         catch( Exception e) {}//GEN-HEADEREND:Methods
         // Here you can add code for customizing the methods array.

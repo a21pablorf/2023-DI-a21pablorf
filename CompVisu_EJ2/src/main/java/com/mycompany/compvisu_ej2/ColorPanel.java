@@ -5,6 +5,7 @@
 package com.mycompany.compvisu_ej2;
 
 import java.awt.Color;
+import java.awt.color.ColorSpace;
 import javax.swing.JColorChooser;
 import javax.swing.JPanel;
 
@@ -106,12 +107,12 @@ public class ColorPanel extends JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         cTxt = JColorChooser.showDialog(ColorPanel.this, "Cor de texto", Color.BLACK);
-        //jTextField1.setText(cTxt.toString());
+        jTextField1.setText(cTxt.toString());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         cFondo = JColorChooser.showDialog(ColorPanel.this, "Cor de fondo", Color.BLACK);
-        //jTextField2.setText(cTxt.toString());
+        jTextField2.setText(cTxt.toString());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
