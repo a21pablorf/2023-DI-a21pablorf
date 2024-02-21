@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.0.final using JasperReports Library version 6.21.0-4f56c4f36cd19e17675219a9ac4692d5f0f13b06  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ClientesGroupByPaisjrxml" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ebfc27ad-7576-4bb5-a5dd-a72d80ca5414">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="IlNVUFBMSUVSUyIgLDE1LDE1LGJjODk0ODllLWQyOTMtNGQzMC1iYTFhLTg2ODVjZDA1NDk1Mjs="/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM "SUPPLIERS"
+order By Country]]>
+	</queryString>
+	<field name="SUPPLIERID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="SUPPLIERID"/>
+		<property name="com.jaspersoft.studio.field.label" value="SUPPLIERID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="SUPPLIERNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SUPPLIERNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="SUPPLIERNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="CONTACTNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CONTACTNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="CONTACTNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="ADDRESS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ADDRESS"/>
+		<property name="com.jaspersoft.studio.field.label" value="ADDRESS"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="CITY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CITY"/>
+		<property name="com.jaspersoft.studio.field.label" value="CITY"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="POSTALCODE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="POSTALCODE"/>
+		<property name="com.jaspersoft.studio.field.label" value="POSTALCODE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="COUNTRY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="COUNTRY"/>
+		<property name="com.jaspersoft.studio.field.label" value="COUNTRY"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="PHONE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PHONE"/>
+		<property name="com.jaspersoft.studio.field.label" value="PHONE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<group name="COUNTRY">
+		<groupExpression><![CDATA[$F{COUNTRY}]]></groupExpression>
+	</group>
+	<group name="Group1" keepTogether="true">
+		<groupExpression><![CDATA[$F{COUNTRY}]]></groupExpression>
+		<groupHeader>
+			<band height="41">
+				<textField>
+					<reportElement x="0" y="0" width="100" height="30" isRemoveLineWhenBlank="true" uuid="aba6975a-2aa6-49de-b5a3-77596d3071c2"/>
+					<textFieldExpression><![CDATA[$F{COUNTRY}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50">
+				<textField>
+					<reportElement x="199" y="12" width="100" height="30" uuid="752f23c9-bacb-4b75-a28a-93619ac4d265"/>
+					<textFieldExpression><![CDATA["Numero de clientes en "+$F{COUNTRY}+" : "+$V{Group1_COUNT}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="94" y="0" width="100" height="30" uuid="9feef30b-1842-44c2-97d1-0bfdce301605">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ffeba68e-a2bb-47f9-997e-21e5c0f5cb4c"/>
+				</reportElement>
+				<text><![CDATA[SUPPLIERNAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="2" width="100" height="30" uuid="c7aba011-d710-4b09-82c8-172053fe64b5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2b5e3324-3aba-4464-a225-0fef57f8d5ce"/>
+				</reportElement>
+				<text><![CDATA[CONTACTNAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="364" y="0" width="100" height="30" uuid="a802da20-ba25-4c54-bdc0-f013963728f2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="befed08c-ac92-452d-8e44-bdaf6888a66b"/>
+				</reportElement>
+				<text><![CDATA[CITY]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="94" y="9" width="100" height="30" uuid="c5751ff4-3739-4e4c-81e0-beced471e98b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ffeba68e-a2bb-47f9-997e-21e5c0f5cb4c"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{SUPPLIERNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="14" width="100" height="30" uuid="dd83f474-e6a6-4b1e-acf1-b748f23b41f9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2b5e3324-3aba-4464-a225-0fef57f8d5ce"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CONTACTNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="364" y="17" width="100" height="30" uuid="eea16cd7-75f9-438d-aba0-80858395b0d3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="befed08c-ac92-452d-8e44-bdaf6888a66b"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CITY}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>
