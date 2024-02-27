@@ -1,0 +1,4 @@
+Comprar leite	Comprar leite no supermercado	27 02 2024
+Estudar Java	Estudar Java na plataforma Udemy	28 02 2024
+Estudar Python	Estudar Python na plataforma Udemy	29 02 2024
+Estudar JavaScrip	Estudar JavaScript na plataforma Udemy	01 03 2024
