@@ -1,6 +1,7 @@
 package datamodel;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,7 +18,7 @@ public class TarefasFicheiro {
     // creación dunha instancia da clase
     private static final TarefasFicheiro instance = new TarefasFicheiro();
     private static final String filename = "tarefas.txt";
-    private List<Tarefa> tarefas;
+    private ObservableList<Tarefa> tarefas;
     private DateTimeFormatter formatter;
     private TarefasFicheiro() {
         formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
@@ -25,12 +26,12 @@ public class TarefasFicheiro {
     public static TarefasFicheiro getInstance() {
         return instance;
     }
-    public List<Tarefa> getTarefas() {
+    public ObservableList<Tarefa> getTarefas() {
         return tarefas;
     }
 
     // só vai ser necesario a primeira vez que se garde o ficheiro
-    public void setTarefas(List<Tarefa> tarefas) {
+    public void setTarefas(ObservableList<Tarefa> tarefas) {
         this.tarefas = tarefas;
     }
     public void lerTarefas() throws IOException {
@@ -72,5 +73,15 @@ public class TarefasFicheiro {
                 bw.close();
             }
         }
+    }
+
+    public void editarTarefa(Tarefa tarefa, Tarefa novaTarefa) {
+        tarefas.set(tarefas.indexOf(tarefa), novaTarefa);
+    }
+    public void borrarTarefa(Tarefa tarefa) {
+        tarefas.remove(tarefa);
+    }
+    public void engadirTarefa(Tarefa novaTarefa) {
+        tarefas.add(novaTarefa);
     }
 }
